@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+  <script>
+
+    "use strict";
+
+    // listing 4.4 Using strict mode to avoid arguments aliasing
+    function infiltrate(person) {
+
+      assert(person === 'gardener', 'The person is a gardener');
+      assert(arguments[0] === 'gardener', 'The first argument is a gardener');
+
+      arguments[0] = 'ninja';
+
+      assert(arguments[0] === 'ninja',
+        'The first argument is now a ninja');
+
+      assert(person === 'gardener',
+        'The person is still a gardener');
+
+    }
+
+    infiltrate('gardener');
+
+  </script>
+</body>
+</html>

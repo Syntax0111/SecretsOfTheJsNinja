@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 4.11 Building a forEach function to demostrate setting a function context -->
+  <script>
+    function forEach(list, callback) {
+      for (var n = 0; n < list.length; n++) {
+        callback.call(list[n], n);
+      }
+    }
+
+    var weapons = [
+      {type: 'shuriken'},
+      {type: 'katana'},
+      {type: 'nunchucks'}
+    ];
+
+    forEach(weapons, function(index) {
+      assert(this === weapons[index],
+      "Got the expected value of " + weapons[index].type);
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Another closure example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 6.1 Using a generator function to generate a sequence of vlaues -->
+  <script>
+    function* WeaponGenerator() {
+      yield "Katana";
+      yield "Wakizashi";
+      yield "Kusarigama";
+    }
+
+    for(let weapon of WeaponGenerator()) {
+      assert(weapon !== undefined, weapon);
+    }
+  </script>
+</body>
+</html>

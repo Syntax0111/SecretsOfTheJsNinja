@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Another closure example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 6.1 Controlling a generator though an iterator object -->
+  <script>
+    function* WeaponGenerator() {
+      yield "Katana";
+      yield "Wakizashi";
+    }
+
+    const weaponsIterator = WeaponGenerator();
+
+    const result1 = weaponsIterator.next();
+    assert(typeof result1 === "object"
+        && result1.value === "Katana"
+        && !result1.done,
+        "Katana received!");
+
+    const result2 = weaponsIterator.next();
+    assert(typeof result2 === "object"
+        && result2.value === "Wakizashi"
+        && !result2.done,
+        "Wakizashi received!");
+
+    const result3 = weaponsIterator.next();
+    assert(typeof result3 === "object"
+        && result3.value === undefined
+        && result3.done,
+        "There are no more results!");
+  </script>
+</body>
+</html>

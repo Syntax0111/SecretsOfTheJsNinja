@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Another closure example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 6.3 Iterating over generator results with a while loop -->
+  <script>
+    function* WeaponGenerator() {
+      yield "Katana";
+      yield "Wakizashi";
+    }
+
+    const weaponsIterator = WeaponGenerator();
+
+    let item;
+    while(!(item = weaponsIterator.next()).done) {
+      assert(item !== null, item.value);
+    }
+  </script>
+</body>
+</html>

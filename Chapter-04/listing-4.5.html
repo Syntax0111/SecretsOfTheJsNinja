@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+  <script>
+
+    // listing 4.5 Invocation as a function
+    function ninja() {
+      return this;
+    }
+
+    function samurai() {
+      "use strict";
+      return this;
+    }
+
+    assert(ninja() === window,
+      "In a 'nonstrict' ninja function, " +
+      "the context is the global window object");
+
+    assert(samurai() === undefined,
+      "In a 'strict' ninja function, " +
+      "the context is undefined");
+
+  </script>
+</body>
+</html>

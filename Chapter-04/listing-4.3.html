@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+  <script>
+    // listing 4.3 The arguments object aliases function parameters
+    function infiltrate(person) {
+      assert(person === 'gardner', 'The person is a gardner');
+      assert(arguments[0] === 'gardner', 'The first argument is a gardner');
+
+      arguments[0] = 'ninja';
+
+      assert(person === 'ninja', 'The person is a ninja');
+      assert(arguments[0] === 'ninja', 'The first argument is a ninja');
+
+      person = 'gardner';
+
+      assert(person === 'gardner', 'The person is a gardner once more');
+      assert(arguments[0] === 'gardner', 'The first argument is a gardner again');
+
+    }
+
+    infiltrate('gardner');
+
+  </script>
+</body>
+</html>

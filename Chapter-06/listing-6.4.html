@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Another closure example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 6.4 Using yield* to delegate to anothe generator -->
+  <script>
+    function* WarriorGenerator() {
+      yield "Sun Tzu";
+      yield* NinjaGenerator();
+      yield "Genhis Khan";
+    }
+
+    function* NinjaGenerator() {
+      yield "Hattori";
+      yield "Yoshi";
+    }
+
+    for(let warrior of WarriorGenerator()) {
+      assert(warrior !== null, warrior);
+    }
+  </script>
+</body>
+</html>

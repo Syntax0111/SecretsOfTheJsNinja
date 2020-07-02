@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+  <script>
+    // listing 4.2 Using the arguments object to perform operations
+    // on all function arguments
+    function sum() {
+      var sum = 0;
+      for (var i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+      }
+      return sum;
+    }
+    assert(sum(1, 2) === 3, "We can add two numbers.");
+    assert(sum(1, 2, 3) === 6, "We can add three numbers.");
+    assert(sum(1, 2, 3, 4) === 10, "We can add three numbers.");
+
+    function sum_with_rest_params(...params) {
+      var sum = 0;
+      for (var i = 0; i < params.length; i++) {
+        sum += params[i];
+      }
+      return sum;
+    }
+    assert(sum_with_rest_params(1, 2) === 3,
+      "We can add two numbers using the 'rest' params.");
+    assert(sum_with_rest_params(1, 2, 3) === 6, "We can add three numbers using the 'rest' params.");
+    assert(sum_with_rest_params(1, 2, 3, 4) === 10, "We can add three numbers using the 'rest' params.");
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 3</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../../assert.css">
+  <script src="../../assert.js"></script>
+</head>
+<body>
+  <script>
+
+    function whoAmI1() {
+      "use strict";
+      return this;
+    }
+
+    function whoAmI2() {
+      return this;
+    }
+
+    assert(whoAmI1() === window, "Window?");
+    assert(whoAmI2() === window, "Window?");
+
+  </script>
+</body>
+</html>

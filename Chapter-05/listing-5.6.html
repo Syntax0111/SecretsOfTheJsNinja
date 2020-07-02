@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Another closure example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 5.6 The behavior of const variables -->
+  <script>
+    const firstConst = "samurai";
+    assert(firstConst === "samurai", "firstConst is a samurai");
+
+    try{
+      firstConst = "ninja";
+      fail("Shouldn't be here");
+    } catch(e) {
+      pass("An exception has occured");
+    }
+
+    assert(firstConst === "samurai",
+          "firstConst is still a samurai!");
+
+    const secondConst = {};
+
+    secondConst.weapon = "wakizashi";
+    assert(secondConst.weapon === "wakizashi",
+          "We can add new properties");
+
+    const thirdConst = [];
+    assert(thirdConst.length === 0, "No items in our array");
+
+    thirdConst.push("Yhoshi");
+
+    assert(thirdConst.length === 1, "The array has changed");
+  </script>
+</body>
+</html>

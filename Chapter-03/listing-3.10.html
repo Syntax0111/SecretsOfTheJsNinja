@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+  <script>
+    // Listing 3.10 Referencing previous default parameters
+    function performAction(ninja, action = "skulking", message = ninja + " " + action) {
+      return message;
+    }
+    assert(performAction("Yoshi") === "Yoshi skulking", "Yoshi is skulking");
+  </script>
+</body>
+</html>

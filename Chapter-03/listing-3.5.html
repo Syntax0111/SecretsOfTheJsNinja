@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A simple callback example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+  <script>
+
+    // Standalone function declaration
+    function myFunctionDeclaration() {
+      function innerFunction() {} // Inner function declaration
+    }
+
+    // Function expression as part of a variable declaration assignment
+    var myFunc = function(){};
+
+    // Function expression as an argument of a function call
+    myFunc(function(){
+      return function(){}; // Function expression as a function return value
+    });
+
+    // Named function expression as part of a function call that will
+    // be immediately invoked
+    (function namedFunctionExpression() {
+    })();
+
+    // Function expressions that will be immediately invoked, as arguments
+    // to unary operators
+    +function(){}();
+    -function(){}();
+    !function(){}();
+    ~function(){}();
+
+    // immediately invoked function expression (IIFE)
+    text = (function(){
+      console.log("In IIFE");
+      return "I get invoked immediately!";
+     })();
+
+  </script>
+</body>
+</html>

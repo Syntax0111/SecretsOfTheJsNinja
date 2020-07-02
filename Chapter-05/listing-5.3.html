@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Another closure example</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 5.3 Using closures to approximate private variables -->
+  <script>
+    function Ninja() {
+      var feints = 0;
+      this.getFeints = function() {
+        return feints;
+      };
+      this.feint = function() {
+        feints++;
+      };
+    }
+  </script>
+</body>
+</html>
