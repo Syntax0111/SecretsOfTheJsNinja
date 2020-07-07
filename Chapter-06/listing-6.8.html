@@ -9,17 +9,24 @@
 <body>
 
   <!-- listing 6.8 Sending data to and receiving data from a generator -->
-  <div id="subTree">
-    <form>
-      <input type="text" />
-    </form>
-    <p>Paragraph</p>
-    <span>Span</span>
-  </div>
   <script>
     function* NinjaGenerator(action) {
-      const imposter = yield
+      const imposter = yield("Hattori " + action); // suspends here
+
+      assert(imposter === "Hanzo",
+            "The generator has been infiltrated");
+
+      yield("Yoshi (" + imposter + ") " + action)
     }
+
+    const ninjaIterator = NinjaGenerator("skulk");
+
+    const result1 = ninjaIterator.next();
+    assert(result1.value === "Hattori skulk", "Hattori is skulking");
+
+    const result2 = ninjaIterator.next("Hanzo");
+    assert(result2.value === "Yoshi (Hanzo) skulk",
+          "We have an imposter!");
   </script>
 </body>
 </html>
