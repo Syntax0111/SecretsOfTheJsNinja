@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A closer look at promise order of execution</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 6.11 A closer look at promise order of execution -->
+  <script>
+    report("At code start");
+
+    var ninjaDelayedPromise = new Promise((resolve, reject) => {
+      report("ninjaDelayedPromise executor");
+      setTimeout(() => {
+        report("Resolving ninjaDelayedPromise");
+        resolve("Hattori");
+      }, 500);
+    });
+
+    assert(ninjaDelayedPromise !== null, "After creating ninjaDelayedPromise");
+
+    ninjaDelayedPromise.then(ninja => {
+      assert(ninja === "Hattori", "ninjaDelayedPromise resolve handled with Hattori");
+    }).catch(error => pass("Something went wrong with ninjaDelayedPromise"));
+
+    const ninjaImmediatePromise = new Promise((reolve, reject) => {
+      report("ninjaImmediatePromise executor. Immediate resolve.");
+      resolve("Yoshi");
+    });
+
+    ninjaImmediatePromise.then(ninja => {
+      assert(ninja === "Yoshi", "ninjaImmediatePromise resolve handled with Yoshi");
+    });
+
+    report("At code end");
+  </script>
+</body>
+</html>

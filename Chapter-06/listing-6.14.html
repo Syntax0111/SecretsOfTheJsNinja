@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exceptions implicitly reject a promise</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../assert.css">
+  <script src="../assert.js"></script>
+</head>
+<body>
+
+  <!-- listing 6.14 Exceptions implicitly reject a promise -->
+  <script>
+    const promise = new Promise((resolve, reject) => {
+      undeclaredVariable++;
+    });
+
+    promise.then(
+      () => fail("Happy path, wont be called!"))
+        .catch(error => pass("Third promise was also rejected")
+    );    
+  </script>
+</body>
+</html>

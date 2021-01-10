@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A simple callback example</title>
+  <title>Storing a collection of unique functions</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../assert.css">
   <script src="../assert.js"></script>
@@ -12,9 +12,12 @@
       nextId: 1,
       cache: {},
       add: function(fn) {
-        fn.id = this.nextId++;
-        this.cache[fn.id] = fn;
-        return true;
+        if (!fn.id) {
+          fn.id = this.nextId++;
+          this.cache[fn.id] = fn;
+          return true;
+        }
+
       }
     };
     function ninja() {}
